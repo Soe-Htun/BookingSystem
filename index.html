@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="animate.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Two+Tone" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- vue Js -->
+    <script src="js/vue.js"></script>
+    <!-- vue resource -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.js"></script>
+    <script src="js/whyUs.js"></script>
+    <script src="js/pricelist.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="js/booking.js"></script>
+    <title>Booking System</title>
+</head>
+<body>
+    <div id="main">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo center">Barber Shop</a>
+                <a href="#" @click="animationsCon=true" data-target="slide-out" class="sidenav-trigger show-on-large">
+                  <i class="material-icons">menu</i>
+                </a>
+            </div>
+          </nav>
+          <!-- side nav -->
+        <ul id="slide-out" class="sidenav">
+            <li>
+                 <div class="user-view">
+                    <div class="background">
+                        <img src="img/userbg.jpg">
+                    </div>
+                    <a v-if="animationsCon" href="#user"><img class="circle animated rotateIn" src="./img/user.png"></a>
+                    <a v-if="animationsCon" href="#name"><span class="white-text name animated fadeInRight">Soe Htun</span></a>
+                    <a v-if="animationsCon" href="#email"><span class="white-text email animated fadeInRight">soehtuncu@gmail.com</span></a>
+                </div>
+            </li>
+            <li v-for="link in links">
+                <a @click="changeContent" v-if="animationsCon" href="javascript:;" :id="link.id" class="waves-effect links animated fadeInLeft">
+                    <i class="material-icons">{{link.icon}}</i>
+                    {{link.title}}
+                </a>
+            </li>
+            <span><a @click="animationsCon = false" href="javascript:;" class="sidenav-close"></a></span>
+        </ul>
+
+        <section class="content">
+            <booking :id=links[0].id></booking>
+            <pricelist :prices="prices" :id=links[1].id></pricelist>
+            <whyus :about="about" :id=links[2].id></whyus>
+            <contact :id=links[3].id></contact>
+        </section>
+    </div>
+
+    <script>
+         document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems, {});
+        });
+
+        
+
+        var app = new Vue({
+            el:'#main',
+            data:{
+                links:[
+                    { title:"Booking",icon:"alarm",id:"linkone"},
+                    { title:"Price List",icon:"attach_money",id:"linktwo"},
+                    { title:"Why Us?",icon:"assignment",id:"linkthree" },
+                    { title:"Contact", icon:"contacts",id:"linkfour"}
+                ],
+                animationsCon: false,
+                about:[],
+                prices:[]
+            },
+            methods:{
+                //close side nav
+                changeContent(e){
+                    document.getElementsByClassName("sidenav-close")[0].click();
+                    var clickedOption = e.srcElement.id;
+                    componentToHide = document.getElementsByClassName('component');
+                    for(let x=0; x < componentToHide.length; x++){
+                        componentToHide[x].style.display="none";
+                    }
+                    document.getElementsByClassName(clickedOption)[0].style.display="block"
+                }
+                //hiding all components & showing only the clicked component
+
+            },
+            created(){
+                //fetching data from firebase database
+                this.$http.get('https://reservationsystem-82b38.firebaseio.com/whyus.json').then(function(data){
+                    this.about = data.body;
+                })
+                this.$http.get('https://reservationsystem-82b38.firebaseio.com/prices.json').then(function(data){
+                    this.prices = data.body;
+                })
+            }
+        })
+    </script>
+</body>
+</html>

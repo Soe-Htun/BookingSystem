@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Sofia&display=swap');
+body{
+    background: linear-gradient(180deg,#8e0603d4,#000000f7) ,url("../img/bg.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    font-family: 'Kaushan Script',cursive;
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+}
+nav{
+    background: linear-gradient(#000000a6,#3300008a);
+    border-bottom: 2px solid #696868;
+    height: 130px;
+}
+nav .brand-logo{
+    font-size: 20px;
+}
+.sidenav .user-view .circle{
+    height: 100px !important;
+    width: 100px !important;
+    margin: 0 auto !important;
+    animation-delay: 0.5s;
+}
+.background > img{
+    width: 100%;
+    height: 100%;
+    filter: brightness(0.5);
+}
+.sidenav .user-view .name{
+    font-family: 'sofia';
+    font-size:1.6rem;
+    animation-delay: 0.7s;
+}
+.sidenav .user-view .email{
+    font-family: 'sofia';
+    font-size:1.7rem;
+    animation-delay: 0.9s;
+}
+.sidenav li > a{
+    font-family: 'sofia' !important;
+    font-size: 2rem;
+    border-bottom: 1px solid lightgreen;
+}
+.sidenav li{
+    padding-top: 20px;
+}
+#side-out li a i{
+    font-size: 2.5rem;
+}
+#linkone{
+    animation-delay: 1s;
+}
+#linktwo{
+    animation-delay: 1.2s;
+}
+#linkthree{
+    animation-delay: 1.4s;
+}
+#linkfour{
+    animation-delay: 1.6s;
+}
+/*****************      
+Component
+*****************/
+
+/* for whyus */
+section.content{
+    width: 70%;
+    display: block;
+    margin: 0 auto;
+    margin-top: 110px;
+    margin-bottom: 150px;
+}
+
+.why-us{
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    -webkit-text-fill-color: transparent;
+}
+.why-us, .pricelist{
+    background: linear-gradient(45deg, rgba(0,0,0,0.6),#ff000094);
+    color: rgba(0,0,0,0.8);
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px solid black;
+}
+.hrhr{
+    border: 1px solid black
+}
+
+/* for pricelist */
+.pricelist{
+    font-size: 1.5rem;
+}
+.pricelist table tr td , .pricelist table tr th{
+    text-align: center !important;
+}
+
+/* for contact */
+.contact{
+    font-size: 1.5rem;
+    text-align: center;
+    background: linear-gradient(45deg,rgba(0, 0, 0, 0.6),#ff000094);
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+.contact i{
+    font-size: 1.5rem;
+}
+::-webkit-scrollbar{
+    width: 10px;
+}
+::-webkit-scrollbar-track{
+    background: #000;
+}
+::-webkit-scrollbar-thumb{
+    background: #5d0100;
+    border-radius: 20px;
+    border: 1px solid white;
+}
+.component{
+    display: none;
+}
+.booking{
+    text-align: center;
+}
+.notifications{
+    color: whitesmoke;
+    font-size: 1.6rem;
+    background: #ff0000;
+    padding: 10px;
+    border-radius: 20px;
+    position: absolute;
+    top: 125px;
+    right: 20px;
+    font-family: 'Kaushan Script';
+    display: none;
+}
+.customerInfo{
+    text-align: left;
+    font-size: 1.5rem;
+    color: whitesmoke !important;
+}
+#last_name, #phone{
+    font-size: 1.4rem !important;
+    color: whitesmoke !important;
+}
+.select-time, .datepicker{
+    text-align: left;
+    font-size: 1.5rem !important;
+    color: whitesmoke;
+}
+.datepicker{
+    background-color: #ff000094;
+}
+.bounceIn{
+    color: whitesmoke;
+}
+
+.datepicker-cancel, .datepicker-clear,
+.datepicker-today, .datepicker-done{
+    color: #840808 !important;
+}
+.select-time{
+    font-size: 2rem;
+    color: whitesmoke;
+    text-align: left;
+}
+td, th{
+    color: whitesmoke;
+}
+th{
+    font-size: 19px;
+}
+td{
+    font-size: 18px;
+}
